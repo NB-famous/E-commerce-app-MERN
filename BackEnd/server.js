@@ -1,6 +1,8 @@
 import express from 'express';
 import data from './data.js'
 
+require('dotenv').config()
+
 const port = process.env.PORT || 5001;
 
 const app = express();
