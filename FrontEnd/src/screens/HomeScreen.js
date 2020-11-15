@@ -57,22 +57,22 @@ const HomeScreen = (props) => {
 
     <div>
 
-      {
-        loading ? <LoadingBox /> : 
+        {
+          loading ? <LoadingBox /> : 
 
-        error ? <MessageBox variant="danger"> {error} </MessageBox> :
+          error ? <MessageBox variant="danger"> {error} </MessageBox> :
 
-        (
-          <div className="row center">
-            {
-              products.map(product => (
-                <Product key={product._id} product={product} />
-              ))
-            }
-          </div> 
-        )
-      }
-  </div>
+          (
+            <div className="row center">
+              {
+                products.map(product => (
+                  <Product key={product._id} product={product} />
+                ))
+              }
+            </div> 
+          )
+        }
+    </div>
   )
 }
 
