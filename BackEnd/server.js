@@ -1,9 +1,28 @@
-import express from 'express';
-import data from './data.js'
 
-const port = process.env.PORT || 5001;
+//// Must include to make require work
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+////////////////////
+
+import express from 'express';
+import mongoose from 'mongoose'
+import data from './data.js';
+import userRouter from './routers/userRouter.js';
+
+require('dotenv').config();
+
+
+const uri = process.env.ATLAS_URI;
 
 const app = express();
+
+
+mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true });
+const connection = mongoose.connection;
+
+connection.once('open', () => {
+    console.log("MongoDB database connection established successfully");
+})
 
 app.get('/api/products/:id', (req, res) => {
     const product = data.products.find((x) => x._id === req.params.id); // moved this from homeScreen component
@@ -17,13 +36,21 @@ app.get('/api/products/:id', (req, res) => {
 
 app.get('/api/products', (req, res) => {
     res.send(data.products)
-})
+});
+
+app.use('/api/users', userRouter)
 
 app.get('/', (req, res) => {
 
     res.send('Server is running...');
 });
 
+/// This is an error catcher middle wear
+app.use((error, req, res, next) => {
+    res.status(500).send({message: error.message})
+})
+
+const port = process.env.PORT || 5001;
 app.listen(port, () => {
     console.log(`Now listening to port ${port}`)
 });

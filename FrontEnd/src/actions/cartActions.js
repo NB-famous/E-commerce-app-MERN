@@ -15,7 +15,7 @@ export const addToCart = (productId, qty) => async(dispatch, getState) => {
             qty,
         }
     })
-    localStorage.setItem('cartItems', JSON.stringify(getState().cartItems)); // this will make changes to cart persistent 
+    localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems)); // this will make changes to cart persistent 
 };
 
 export const removeFromCart = (productId) => (dispatch, getState) => {
