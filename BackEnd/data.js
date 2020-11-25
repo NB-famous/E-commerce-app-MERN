@@ -20,7 +20,7 @@ const data = {
 
     products:[
         {
-            _id:'1',
+            
             name: 'Nice suit',
             category:'suits',
             image:'/images/p1.jpg',
@@ -33,7 +33,7 @@ const data = {
         },
 
         {
-            _id:'2',
+            
             name: 'Shirt',
             category:'shirt',
             image:'/images/p2.jpg',
@@ -46,7 +46,7 @@ const data = {
         },
 
         {
-            _id:'3',
+            
             name: 'Jacket',
             category:'suit',
             image:'/images/p3.jpg',
@@ -59,7 +59,7 @@ const data = {
         },
 
         {
-            _id:'4',
+            
             name: 'Pants',
             category:'pants',
             image:'/images/p4.jpg',
@@ -72,8 +72,8 @@ const data = {
         },
 
         {
-            _id:'5',
-            name: 'Pants',
+            
+            name: 'Jeans',
             category:'pants',
             image:'/images/p5.jpg',
             price: 50,

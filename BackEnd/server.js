@@ -6,14 +6,13 @@ const require = createRequire(import.meta.url);
 
 import express from 'express';
 import mongoose from 'mongoose'
-import data from './data.js';
+//import data from './data.js';
+import productRouter from './routers/productRouter.js';
 import userRouter from './routers/userRouter.js';
 
+
 require('dotenv').config();
-
-
 const uri = process.env.ATLAS_URI;
-
 const app = express();
 
 
@@ -24,24 +23,27 @@ connection.once('open', () => {
     console.log("MongoDB database connection established successfully");
 })
 
-app.get('/api/products/:id', (req, res) => {
-    const product = data.products.find((x) => x._id === req.params.id); // moved this from homeScreen component
-    if(product){
-        res.send(product);
 
-    }else{
-        res.status(404).send({message: 'Product not Found'});
-    }
-})
+/////// This is before we emplimented mongodbDatabase////// Re-factored in productRouter.js go see how its implemented
+// app.get('/api/products/:id', (req, res) => {
+//     const product = data.products.find((x) => x._id === req.params.id); // moved this from homeScreen component
+//     if(product){
+//         res.send(product);
 
-app.get('/api/products', (req, res) => {
-    res.send(data.products)
-});
+//     }else{
+//         res.status(404).send({message: 'Product not Found'});
+//     }
+// })
 
-app.use('/api/users', userRouter)
+// Static data api 
+// app.get('/api/products', (req, res) => {
+//     res.send(data.products)
+// });
+////////////////////////////////
 
+app.use('/api/users', userRouter);
+app.use('/api/products', productRouter);
 app.get('/', (req, res) => {
-
     res.send('Server is running...');
 });
 
