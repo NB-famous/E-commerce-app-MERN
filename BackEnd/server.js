@@ -10,10 +10,18 @@ import mongoose from 'mongoose'
 import productRouter from './routers/productRouter.js';
 import userRouter from './routers/userRouter.js';
 
+//when not using require we can import dotenv & use
+// dotenv.config();
+const cors = require('cors');
+
 
 require('dotenv').config();
+
 const uri = process.env.ATLAS_URI;
 const app = express();
+app.use(express.json());
+app.use(express.urlencoded({extended: true}))
+app.use(cors());
 
 
 mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true });
