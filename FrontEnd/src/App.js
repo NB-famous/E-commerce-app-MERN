@@ -8,6 +8,7 @@ import CartScreen from './screens/CartScreen';
 import { useDispatch, useSelector } from 'react-redux';
 import SigninScreen from './screens/SigninScreen';
 import { signout } from './actions/userActions';
+import RegisterScreen from './screens/RegisterScreen';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
 
   const signoutHandler = () => {
     dispatch(signout());
+    //window.location.reload(false); // this code will alow you to reload the window page
   }
 
   return (
@@ -44,7 +46,9 @@ function App() {
                   {' '}
                   </Link>
                   <ul className="dropdown-content">
-                    <Link to="#signout" onClick={signoutHandler}>Sign Out</Link>
+                    <li>
+                      <Link to="#signout" onClick={signoutHandler}>Sign Out</Link>   
+                    </li>
                   </ul>
                   </div>
                 ) : 
@@ -58,6 +62,7 @@ function App() {
           <Route path="/cart/:id?" component={CartScreen}></Route>
           <Route path="/product/:id" component={ProductScreen} exact></Route>
           <Route path="/signin" component={SigninScreen}></Route>
+          <Route path="/register" component={RegisterScreen}></Route>
           <Route path="/" component={HomeScreen} exact></Route>
       </main>
       <footer className="row center">All rights & reserved</footer>
