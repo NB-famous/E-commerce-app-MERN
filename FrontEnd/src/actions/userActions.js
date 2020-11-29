@@ -18,12 +18,6 @@ export const signin = (email, password) => async(dispatch) =>{
     }
 }
 
-export const signout = () => (dispatch) => {
-    localStorage.removeItem('userInfo');
-    localStorage.removeItem('cartItems');
-    dispatch({type:USER_SIGNOUT});
-} 
-
 export const register = (name, email, password) => async(dispatch) =>{
     dispatch({type: USER_REGISTER_REQUEST, payload:{name, email, password}});
 
@@ -41,3 +35,10 @@ export const register = (name, email, password) => async(dispatch) =>{
         error.message});
     }
 }
+
+export const signout = () => (dispatch) => {
+    localStorage.removeItem('userInfo');
+    localStorage.removeItem('cartItems');
+    localStorage.removeItem('shippingAddress')
+    dispatch({type:USER_SIGNOUT});
+} 
