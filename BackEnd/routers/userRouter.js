@@ -64,6 +64,7 @@ userRouter.get('/:id', expressAsyncHandler(async(req, res) => {
     }
 }));
 
+// New API TO UPDATE PROFILE
 userRouter.put('/profile', isAuth, expressAsyncHandler(async(req, res) => {
     const user = await User.findById(req.user._id);
     if(user){
