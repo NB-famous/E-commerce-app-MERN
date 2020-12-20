@@ -10,13 +10,20 @@ import mongoose from 'mongoose'
 import productRouter from './routers/productRouter.js';
 import userRouter from './routers/userRouter.js';
 import orderRouter from './routers/orderRouter.js';
+import uploadRouter from './routers/uploadRouter.js';
+
+// to upload you must import path
+// this is a built in node package
+
+import path from 'path'
+
 
 //when not using require we can import dotenv & use
 // dotenv.config();
 const cors = require('cors');
-
-
 require('dotenv').config();
+
+
 
 const uri = process.env.ATLAS_URI;
 const app = express();
@@ -50,13 +57,15 @@ connection.once('open', () => {
 // });
 ////////////////////////////////
 
-
+app.use('/api/uploads', uploadRouter);
 app.use('/api/users', userRouter);
 app.use('/api/products', productRouter);
 app.use('/api/orders', orderRouter);
 app.get('/api/config/paypal', (req, res) => {
     res.send(process.env.PAYPAL_CLIENT_ID);
 })
+const __dirname = path.resolve();
+app.use('/uploads', express.static(path.join(__dirname, '/uploads' )))
 app.get('/', (req, res) => {
     res.send('Server is running...');
 });

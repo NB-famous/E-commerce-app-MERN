@@ -22,3 +22,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+#this will remove jpg file from uploads folder when commit and pushing to github
+/uploads/*.jpg
