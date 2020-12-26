@@ -67,8 +67,8 @@ app.get('/api/config/paypal', (req, res) => {
 const __dirname = path.resolve();
 app.use('/uploads', express.static(path.join(__dirname, '/uploads' )));
 ///Deploy version
-app.use(express.static(path.join(__dirname, '/Frontend/build')));
-app.get('*', (req,res) => res.sendFile(path.join(__dirname, '/Frontend/build/index.html')))
+app.use(express.static(path.join(__dirname, '/FrontEnd/build')));
+app.get('*', (req,res) => res.sendFile(path.join(__dirname, '/FrontEnd/build/index.html')))
 //////// 
 
 //// Local host ////
