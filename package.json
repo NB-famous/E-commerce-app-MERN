@@ -1,0 +1,21 @@
+{
+  "name": "ecommerce-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cd Frontend && yarn install && yarn run build "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NB-famous/E-commerce-app-MERN.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NB-famous/E-commerce-app-MERN/issues"
+  },
+  "homepage": "https://github.com/NB-famous/E-commerce-app-MERN#readme",
+  "engines": {"node":"12.18.3", "npm": "6.14.9"}
+}
