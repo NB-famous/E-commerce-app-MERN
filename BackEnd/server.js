@@ -5,8 +5,7 @@ const require = createRequire(import.meta.url);
 ////////////////////
 
 import express from 'express';
-import mongoose from 'mongoose';
-import dotenv from 'dotenv';
+import mongoose from 'mongoose'
 //import data from './data.js';
 import productRouter from './routers/productRouter.js';
 import userRouter from './routers/userRouter.js';
@@ -22,16 +21,15 @@ import path from 'path'
 //when not using require we can import dotenv & use
 // dotenv.config();
 const cors = require('cors');
-require('dotenv').config({path:'./.env'});
+require('dotenv').config();
 
-//dotenv.config();
 
+
+const uri = process.env.ATLAS_URI;
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended: true}))
 app.use(cors());
-
-const uri = process.env.ATLAS_URI;
 
 
 mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true });
@@ -68,7 +66,6 @@ app.get('/api/config/paypal', (req, res) => {
 })
 const __dirname = path.resolve();
 app.use('/uploads', express.static(path.join(__dirname, '/uploads' )));
-
 ///Deploy version
 app.use(express.static(path.join(__dirname, '/FrontEnd/build')));
 app.get('*', (req,res) => res.sendFile(path.join(__dirname, '/FrontEnd/build/index.html')))
