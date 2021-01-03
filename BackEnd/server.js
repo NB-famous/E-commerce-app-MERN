@@ -22,9 +22,9 @@ import path from 'path'
 //when not using require we can import dotenv & use
 // dotenv.config();
 const cors = require('cors');
-//require('dotenv').config();
+require('dotenv').config();
 
-dotenv.config();
+//dotenv.config();
 
 const app = express();
 app.use(express.json());
