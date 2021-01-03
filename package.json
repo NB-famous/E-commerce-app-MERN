@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cd FrontEnd && npm install && npm run build "
+    "build": "cd FrontEnd && npm install && npm run build ",
+    "start": "nodemon --watch backend --exec node --experimental-modules BackEnd/server.js"
   },
   "repository": {
     "type": "git",
